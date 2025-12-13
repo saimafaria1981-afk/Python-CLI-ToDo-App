@@ -12,8 +12,8 @@ The app allows users to manage their daily tasks directly in the terminal, makin
 
 ## Features Implemented
 - **Add Task:** Create a new task with a title.
-- **Li st Tasks:** View all tasks with their status (Done / Not Done).
-- **Update Task:**Edit the title of an existing task.
+- **List Tasks:** View all tasks with their status (Done / Not Done).
+- **Update Task:** Edit the title of an existing task.
 - **Delete Task:** Remove a task from the list.
 - **Mark Complete/Incomplete:** Toggle the completion status of a task.
 - **Task Priority:** Assign priority to tasks (High / Medium / Low).
@@ -31,14 +31,14 @@ python main.py
 
 ---
 
-##How Gemini CLI Was Used
+## How Gemini CLI Was Used
 
 Gemini CLI helped me generate the initial/core structure of the app, including the main menu loop and basic task functions.
 I modified, debugged, and simplified the code myself to ensure it works properly and is easy to understand.
 
 ---
 
-##Bonus Features Implemented
+## Bonus Features Implemented
 
 1: Task Priority (High / Medium / Low)
 2: Confirmation Before Deletion
