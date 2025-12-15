@@ -1,5 +1,22 @@
+import json
+import os
+
+
 # A list to store tasks
 tasks = []
+
+FILE_NAME = "tasks.json"
+
+def load_tasks():
+    global tasks
+    if os.path.exists(FILE_NAME):
+        with open(FILE_NAME, "r") as file:
+            tasks = json.load(file)
+
+def save_tasks():
+    with open("tasks.json", "w") as file:
+        json.dump(tasks, file , indent=4)
+
 
 def add_task():
     """Adds a new task to the list."""
@@ -13,22 +30,32 @@ def add_task():
     
     max_id = 0
     for task in tasks:
-        if task ['id'] > max_id:
-            max_id = task['id']
+        if task ["id"] > max_id:
+
+            max_id = task["id"]
     new_id = max_id + 1
         
-    tasks.append({"id": new_id, "name": task_name, "completed": False , "priority" : priority})
+    tasks.append({
+        "id": new_id,
+        "name": task_name,
+        "completed": False,
+        "priority": priority
+    })
+    save_tasks()
     print(f"Task '{task_name}' with ID '{new_id}' added successfully!")
 
 def list_tasks():
     """Lists all the tasks."""
     if not tasks:
         print("No tasks found.")
-    else:
-        print("\n--- Your Tasks ---")
-        for task in tasks:
-            status = "DONE" if task["completed"] else "TO DO"
-            print(f"ID: {task['id']} {task['name']} [{status}] (Priority: {task['priority']})")
+        return
+    print("\n{:<5} {:<25} {:<10} {:<10}".format("ID", "Task Name", "Status", "Priority"))
+    print("-" * 55)
+
+    # Table rows
+    for task in tasks:
+        status = "DONE" if task["completed"] else "TO DO"
+        print("{:<5} {:<25} {:<10} {:<10}".format(task["id"], task["name"], status, task["priority"]))
 
 def mark_task():
     """Marks a task as complete."""
@@ -46,9 +73,11 @@ def mark_task():
 
     for task in tasks:
         if task["id"] == task_id:
-            task["completed"] = True
-            print(f"Task with ID '{task_id}' marked as complete!")
-            return
+            task["completed"] = not task["completed"]
+        save_tasks()
+        status = "DONE" if task["completed"] else "TO DO"
+        print(f"Task with ID '{task_id}' is now '{status}'!")
+        return
             
     print(f"Task with ID '{task_id}' not found.")
 
@@ -61,6 +90,11 @@ def update_task():
     list_tasks()
 
     task_id = input("Enter task ID to update: ")
+    try:
+        task_id = int(task_id)
+    except ValueError:
+        print("Please enter a valid number.")
+        return
 
     for task in tasks:
         if (task["id"]) == task_id:
@@ -70,13 +104,14 @@ def update_task():
 
             if new_title:
                 task["name"] = new_title
+                save_tasks()
                 print(f"Task '{task['name']}' with ID '{task_id}' updated successfully!")
             else:
                 print("Task unchanged.")
 
             return
 
-    print("Task with ID '{task_id}' not found.")
+    print(f"Task with ID '{task_id}' not found.")
 
 
 def delete_task():
@@ -99,9 +134,10 @@ def delete_task():
            
             if confirm.lower() =='y':
                 tasks.remove(task)
-                print(f"Task '{task['name']}' with ID '{task_id}' deleted successfully!")
+                save_tasks()
+                print(f"Task '{task['name']}' deleted successfully!")
             else:
-                print("Deletion of Task {task_id} cancelled.")
+                print(f"Deletion of Task '{task['name']}' cancelled.")
 
             return
             

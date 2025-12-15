@@ -1,4 +1,5 @@
-from tasks import add_task, list_tasks, mark_task, update_task, delete_task
+from tasks import *
+load_tasks()
 
 def display_menu():
     """Displays the main menu."""
@@ -27,6 +28,7 @@ def main():
         elif choice == '5':
             delete_task()
         elif choice == '6':
+            save_tasks()
             print("Exiting the To-Do application. Goodbye!")
             break
         else:

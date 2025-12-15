@@ -1,6 +1,6 @@
 # Python CLI Todo App
 
-**Author:** Faria
+**Author:** Faria Mahmood 
 
 ---
 
@@ -10,16 +10,21 @@ The app allows users to manage their daily tasks directly in the terminal, makin
 
 ---
 
-## Features Implemented
-- **Add Task:** Create a new task with a title.
-- **Li st Tasks:** View all tasks with their status (Done / Not Done).
-- **Update Task:**Edit the title of an existing task.
-- **Delete Task:** Remove a task from the list.
-- **Mark Complete/Incomplete:** Toggle the completion status of a task.
-- **Task Priority:** Assign priority to tasks (High / Medium / Low).
-- **Confirmation Before Deletion:** Prevent accidental deletion by asking for confirmation before removing a task.
 
-> **Note:** File saving using JSON was not implemented in this version.
+### Core Features
+- **Add Task:** Add a new task with a name and priority.  
+- **List Tasks:** View all tasks in a **clean table format** with ID, name, status, and priority.  
+- **Update Task:** Edit the title of an existing task.  
+- **Delete Task:** Remove a task from the list with **confirmation before deletion**.  
+- **Mark Complete / Toggle Status:** Toggle task status between `DONE` and `TO DO`.    
+
+### Bonus Features
+- **Task Priority:** Assign `Low`, `Medium`, or `High` priority to tasks.  
+- **Confirmation Before Deleting:** Prevent accidental deletion.  
+- **File-Based Storage (JSON):**  
+  - Tasks are automatically saved to `tasks.json` whenever a task is added, updated, deleted, or marked complete.  
+  - Tasks are **loaded from JSON** when the app starts, so data persists across runs.  
+- **Clean Table Format:** Tasks are displayed in a neat table for easy reading.
 
 ---
 
@@ -31,14 +36,21 @@ python main.py
 
 ---
 
-##How Gemini CLI Was Used
+## How Gemini CLI Was Used
 
-Gemini CLI helped me generate the initial/core structure of the app, including the main menu loop and basic task functions.
-I modified, debugged, and simplified the code myself to ensure it works properly and is easy to understand.
+Gemini CLI helped generate the initial structure and menu design for the app.
+I then modified, debugged, and extended the code to include features like:
+
+-JSON file saving
+-Task priority
+-Confirmation before deletion
+-Toggle complete
 
 ---
 
-##Bonus Features Implemented
+## Future Improvements
 
-1: Task Priority (High / Medium / Low)
-2: Confirmation Before Deletion
+-Due dates
+-Add filtering by priority/status
+-Implement colored output for status and priority
+-Allow sorting tasks by completion or priority
