@@ -10,7 +10,6 @@ The app allows users to manage their daily tasks directly in the terminal, makin
 
 ---
 
-
 ### Core Features
 - **Add Task:** Add a new task with a name and priority.  
 - **List Tasks:** View all tasks in a **clean table format** with ID, name, status, and priority.  
@@ -54,3 +53,4 @@ I then modified, debugged, and extended the code to include features like:
 -Add filtering by priority/status
 -Implement colored output for status and priority
 -Allow sorting tasks by completion or priority
+
